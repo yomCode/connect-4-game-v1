@@ -2,8 +2,19 @@ import React from 'react'
 import GameCircle from './GameCircle'
 
 function GameBoard() {
+
+    const style = {display: 'grid', 
+                    gridTemplateColumns: '1fr 1fr 1fr 1fr', 
+                    gridTemplateRows: '1 fr 1fr 1fr 1fr', 
+                    padding: 20, 
+                    width: 500,
+                    position: 'absolute',
+                    top: '25%',
+                    left: '50%',
+                    marginLeft: '-250px',
+                }
   return (
-    <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gridTemplateRows: '1 fr 1fr 1fr 1fr', border: '1px solid black', padding: 20, borderRadius: '10px'}}>
+    <div style={style}>
         <GameCircle id={1} backgroundcolor='red' />
         <GameCircle id={2} backgroundcolor='blue' />
         <GameCircle id={3} backgroundcolor='red' />
