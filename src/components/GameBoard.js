@@ -3,7 +3,7 @@ import GameCircle from './GameCircle'
 import './Game.css'
 import Header from './Header'
 import Footer from './Footer'
-import { isWinner, isDraw, getComputerMove } from '../helper';
+import { isWinner, isDraw, ComputerMove } from '../helper';
 import { GAME_STATE_DRAW, GAME_STATE_PLAYING, GAME_STATE_WIN, NO_CIRCLE, NO_PLAYER, PLAYER_1, PLAYER_2 } from '../../src/Constant'
 
 
@@ -41,7 +41,7 @@ function GameBoard() {
 
   const suggestMove = () => {
    
-    circleClick(getComputerMove(gameBoard));
+    circleClick(ComputerMove(gameBoard));
   }
 
 
