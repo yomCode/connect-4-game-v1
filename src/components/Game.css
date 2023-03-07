@@ -3,11 +3,14 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   padding: 20px;
-  width: 500px;
+  /* width: 500px; */
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 50%;
   margin-left: -250px;
+  background-color: bisque;
+  border: 8px solid burlywood;
+  border-radius: 8%;
 }
 
 .gameCircle {

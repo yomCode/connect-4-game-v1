@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import GameCircle from './GameCircle'
 import './Game.css'
 
+const NO_CIRCLE = 16
 const NO_PLAYER = 0
 const PLAYER_1 = 1;
 const PLAYER_2 = 2;
@@ -13,12 +14,25 @@ function GameBoard() {
   const [currentPlayer, setCurrentPlayer] = useState(PLAYER_1);
 
   console.log(gameBoard)
+
+  const initBoard = () => {
+    const circles = [];
+    for (let i = 0; i < NO_CIRCLE; i++) {
+      circles.push(renderCircle(i))
+    }
+    return circles;
+  }
+
   const circleClick = (id) => {
-  //  debugger;
-    // console.log('Circle ' + id + ' was clicked')
-    const board = [...gameBoard];
-    board[id] = currentPlayer;
-    setGameBoard(board);
+    setGameBoard(prev=> {
+      return prev.map((circle, index)=>{
+        if(index === id){
+          return currentPlayer
+        }
+        return circle
+      })
+    })
+
     console.log(gameBoard)
 
     setCurrentPlayer(currentPlayer === PLAYER_1 ? PLAYER_2 : PLAYER_1);
@@ -26,7 +40,7 @@ function GameBoard() {
   }
 
   const renderCircle = (id) => {
-    return <GameCircle id={id} className={`player_${gameBoard[id]}`} onCircleClick={circleClick} />
+    return <GameCircle key={id} id={id} className={`player_${gameBoard[id]}`} onCircleClick={circleClick} />
 
   }
  
@@ -36,22 +50,7 @@ function GameBoard() {
 
 
     <div className='gameBoard'>
-        {renderCircle(0)}
-        {renderCircle(1)}
-        {renderCircle(2)}
-        {renderCircle(3)}
-        {renderCircle(4)}
-        {renderCircle(5)}
-        {renderCircle(6)}
-        {renderCircle(7)}
-        {renderCircle(8)}
-        {renderCircle(9)}
-        {renderCircle(10)}
-        {renderCircle(11)}
-        {renderCircle(12)}
-        {renderCircle(13)}
-        {renderCircle(14)}
-        {renderCircle(15)}
+      {initBoard()}
     </div>
   )
    
