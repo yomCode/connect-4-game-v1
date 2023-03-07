@@ -2,13 +2,13 @@ import React from 'react'
 import './Game.css'
 import { GAME_STATE_PLAYING, GAME_STATE_DRAW, GAME_STATE_IDLE, GAME_STATE_WIN } from '../Constant'
 
-function Header({player, gameState}) {
+function Header({currentPlayer, gameState, winPlayer}) {
     const renderLabel = () => {
         switch(gameState){
             case GAME_STATE_WIN:
-                return `Player ${player} Win`
+                return `Player ${winPlayer} Wins`
             case GAME_STATE_PLAYING:
-                return `Player ${player} Turn`
+                return `Player ${currentPlayer} Turn`
             default:
                 return 'Game Over'
         }

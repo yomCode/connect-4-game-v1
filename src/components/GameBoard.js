@@ -13,7 +13,7 @@ function GameBoard() {
 
   const [gameBoard, setGameBoard] = useState(Array(16).fill(NO_PLAYER));
   const [currentPlayer, setCurrentPlayer] = useState(PLAYER_1);
-  
+  const [winPlayer, setWinPlayer] = useState(NO_PLAYER);
   const [gameState, setGameState] = useState(GAME_STATE_PLAYING);
 
   console.log(gameBoard)
@@ -29,6 +29,7 @@ function GameBoard() {
   const circleClick = (id) => {
     if(isWinner(gameBoard, id, currentPlayer)){
       setGameState(GAME_STATE_WIN)
+      setWinPlayer(currentPlayer);
     }
     setGameBoard(prev=> {
       return prev.map((circle, index)=>{
@@ -54,7 +55,7 @@ function GameBoard() {
    
   return (
     <>
-      <Header gameState={gameState} player={currentPlayer} />
+      <Header gameState={gameState} currentPlayer={currentPlayer} winPlayer={winPlayer} />
       <div className='gameBoard'>
         {initBoard()}
       </div>
