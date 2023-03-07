@@ -40,3 +40,16 @@ export const isDraw = (gameBoard, currentMove, currentPlayer) => {
 
     
 }
+
+export const getComputerMove = (gameBoard) => {
+    let validMoves = [];
+    for(let i=0; i<gameBoard.length; i++){
+        if(gameBoard[i] === 0){
+            validMoves.push(i);
+        }
+    }
+    console.log(validMoves)
+    let randomMove = Math.floor(Math.random() * validMoves.length);
+    console.log(randomMove)
+    return validMoves[randomMove];
+}
