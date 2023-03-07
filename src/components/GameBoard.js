@@ -14,13 +14,15 @@ function GameBoard() {
 
   console.log(gameBoard)
   const circleClick = (id) => {
-   debugger;
+  //  debugger;
     // console.log('Circle ' + id + ' was clicked')
-    gameBoard[id] = currentPlayer;
-    setGameBoard(gameBoard);
+    const board = [...gameBoard];
+    board[id] = currentPlayer;
+    setGameBoard(board);
     console.log(gameBoard)
 
     setCurrentPlayer(currentPlayer === PLAYER_1 ? PLAYER_2 : PLAYER_1);
+    console.log(currentPlayer)
   }
 
   const renderCircle = (id) => {
