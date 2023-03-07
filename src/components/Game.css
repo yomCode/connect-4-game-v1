@@ -15,13 +15,17 @@
   height: 100px;
   margin: 20px;
   border-radius: 50%;
+  border: 5px solid #000;
 }
 
+.player_0 {
+  background-color: #fff;
+}
 
-.odd{
+.player_1{
     background-color: red;
 }
 
-.even{
+.player_2{
     background-color: blue;
 }

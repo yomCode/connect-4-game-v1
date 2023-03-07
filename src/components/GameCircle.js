@@ -3,12 +3,12 @@ import './Game.css'
 
 
 
-function GameCircle({id, children, onCircleClick}) {
+function GameCircle({id, children,className, onCircleClick}) {
 
 
   return (
     
-    <div className={`gameCircle ${id%2 === 0 ? 'odd' : 'even'}`} onClick={() => onCircleClick(id)} >
+    <div className={`gameCircle ${className}`} onClick={() => onCircleClick(id)} >
     
         {children}
     </div>
