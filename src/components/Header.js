@@ -1,11 +1,11 @@
 import React from 'react'
 import './Game.css'
 
-function Header() {
+function Header({player}) {
   return (
     <div className='panel header'>
         <div className="header-text">
-            Player 1 Turn
+            Player {player} Turn
         </div>
 
     </div>
