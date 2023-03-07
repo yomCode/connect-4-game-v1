@@ -1,0 +1,27 @@
+.gameBoard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  padding: 20px;
+  width: 500px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  margin-left: -250px;
+}
+
+.gameCircle {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  border-radius: 50%;
+}
+
+
+.odd{
+    background-color: red;
+}
+
+.even{
+    background-color: blue;
+}
