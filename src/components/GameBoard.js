@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import GameCircle from './GameCircle'
 import './Game.css'
 import Header from './Header'
 import Footer from './Footer'
-import { isWinner } from '../helper';
-import { GAME_STATE_PLAYING, GAME_STATE_WIN, NO_CIRCLE, NO_PLAYER, PLAYER_1, PLAYER_2 } from '../../src/Constant'
+import { isWinner, isDraw } from '../helper';
+import { GAME_STATE_DRAW, GAME_STATE_PLAYING, GAME_STATE_WIN, NO_CIRCLE, NO_PLAYER, PLAYER_1, PLAYER_2 } from '../../src/Constant'
 
 
 
@@ -26,11 +26,32 @@ function GameBoard() {
     return circles;
   }
 
+  useEffect(() => {
+    initGame();
+  }, [])
+
+  const initGame = () => {
+    console.log('initGame')
+    setGameBoard(Array(16).fill(NO_PLAYER));
+    setCurrentPlayer(PLAYER_1);
+    setWinPlayer(NO_PLAYER);
+    setGameState(GAME_STATE_PLAYING);
+  }
+
   const circleClick = (id) => {
+    if(gameBoard[id] !== NO_PLAYER || gameState !== GAME_STATE_PLAYING){
+      return;
+    }
     if(isWinner(gameBoard, id, currentPlayer)){
       setGameState(GAME_STATE_WIN)
       setWinPlayer(currentPlayer);
     }
+
+    if(isDraw(gameBoard, id, currentPlayer)){
+      setGameState(GAME_STATE_DRAW);
+      setWinPlayer(NO_PLAYER);
+    }
+
     setGameBoard(prev=> {
       return prev.map((circle, index)=>{
         if(index === id){
@@ -59,7 +80,7 @@ function GameBoard() {
       <div className='gameBoard'>
         {initBoard()}
       </div>
-      <Footer />
+      <Footer onNewGameClick={initGame} />
     </>
   )
    
